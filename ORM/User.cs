@@ -12,5 +12,7 @@
         public string? NumberLicence { get; set; }
         public long RoleId { get; set; }
         public virtual Role? Role { get; set; }
+
+        public string? Adress { get; set; }
     }
 }
