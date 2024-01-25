@@ -11,6 +11,9 @@ namespace ORM
     {
         public DbSet <User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<Case> Cases { get; set; }
+        public DbSet<Document> Documents { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
