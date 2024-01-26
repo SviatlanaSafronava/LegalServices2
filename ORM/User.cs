@@ -12,9 +12,6 @@
         public string? NumberLicence { get; set; }
         public long RoleId { get; set; }
         public virtual Role? Role { get; set; }
-
-        public List<Role> Roles { get; set;} = new List<Role>();
-        public List<Contract> Contracts { get; set; } = new List<Contract>();
-
-    }
+        public virtual ICollection<Contract> Contracts { get; set; } = new List<Contract>();
+     }
 }

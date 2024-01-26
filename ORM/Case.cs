@@ -14,7 +14,8 @@ namespace ORM
         public string? Subject { get; set; }
         public int ContractId { get; set; }
         public virtual Contract? Contract { get; set; }
-        public Document Document { get; set; }
+        public virtual ICollection<Document>? Documents { get; set; }
+       
 
        
     }
