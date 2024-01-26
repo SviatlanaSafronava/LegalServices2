@@ -13,5 +13,5 @@
         public long RoleId { get; set; }
         public virtual Role? Role { get; set; }
         public virtual ICollection<Contract> Contracts { get; set; } = new List<Contract>();
-    }
+     }
 }
