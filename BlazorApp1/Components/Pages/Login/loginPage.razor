@@ -1,0 +1,13 @@
+﻿@page "/"
+
+@layout LoginLayout
+
+<h3>loginPage</h3>
+
+<MudTextField @bind-Value="Login" Label="Login" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="Password" Label="Password" InputType="InputType.Password" Variant="Variant.Outlined"></MudTextField>
+
+@code {
+	string? Login { get; set; }
+	string? Password { get; set; }
+}
