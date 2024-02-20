@@ -12,7 +12,7 @@ namespace ORM
         public long Id { get; set; }
 
         public string? Subject { get; set; }
-        public int ContractId { get; set; }
+        public long ContractId { get; set; }
         public virtual Contract? Contract { get; set; }
         public virtual ICollection<Document>? Documents { get; set; }
        

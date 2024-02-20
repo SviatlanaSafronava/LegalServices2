@@ -11,7 +11,7 @@ namespace ORM
         public long Id { get; set; }
         public string? Name { get; set; }
         public string? Date { get; set; }
-        public int CaseId { get; set; }
+        public long CaseId { get; set; }
         public virtual Case? Case { get; set; }
 
     }

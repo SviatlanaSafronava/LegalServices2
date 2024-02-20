@@ -14,7 +14,14 @@ namespace ORM
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Case> Cases { get; set; }
         public DbSet<Document> Documents { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+		public LegalContext(DbContextOptions<LegalContext> obtions) : base (obtions)
+           
+        {
+
+        }
+             
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;");
