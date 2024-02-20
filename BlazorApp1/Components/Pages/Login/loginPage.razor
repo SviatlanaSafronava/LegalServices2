@@ -1,4 +1,4 @@
-﻿ @page "/"
+﻿@page "/"
 @using DAL
 @using DAL_Interface.Repository
 @using ORM
@@ -11,7 +11,7 @@
 	<MudAvatar Color="Color.Primary">LS</MudAvatar>
 	LegalServices</h3>
 
- 
+
  <MudGrid>
   <MudItem xs="4" sm="4" md="4" lg="4" xl="4">
 	  <MudPaper Class="pa-16">Вход в личный кабинет</MudPaper>
@@ -37,12 +37,12 @@
 
 <MudButton OnClick="@((e) => OnLogin())">Click me</MudButton>
 
-    
+
 @*@<MudTextField @bind-Value="Login" Label="Login" Variant="Variant.Outlined"></MudTextField>
 <MudTextField @bind-Value="Password" Label="Password" InputType="InputType.Password" Variant="Variant.Outlined"></MudTextField>
 <MudButton OnClick="Click">click</MudButton>*@
 
-  
+
 
 @code {
 	string? Login { get; set; }
@@ -62,17 +62,15 @@
 	}
 	void Click()
 	{
-		 
-				User user = unitOfWork.UserRepository.Get().FirstOrDefault(x => x.Email == Login);
 
-				if (user.NumberPassport == Password)
-				{
+		User user = unitOfWork.UserRepository.Get().FirstOrDefault(x => x.Email == Login);
 
-				}
-			
-		
+		if (user.NumberPassport == Password)
+		{
+
+		}
+
+
 	}
-	 
-}
- 
 
+} 
