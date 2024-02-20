@@ -1,0 +1,36 @@
+﻿@page "/register"
+@using DAL_Interface.Repository
+
+@layout LoginLayout
+@inject IUnitOfWork unitOfWork
+@inject NavigationManager Navigation
+
+<MudTextField @bind-Value="Login" Label="Login" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="Password" Label="Password" InputType="InputType.Password" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="NumberPassport" Label="NumberPassport" Variant="Variant.Outlined"></MudTextField>
+
+<MudButton OnClick="OnRegister" Color="Color.Primary">Click me</MudButton>
+
+@code {
+	string? Login { get; set; }
+	string? Password { get; set; }
+	string? NumberPassport { get; set; }
+
+	public void OnRegister(MouseEventArgs args) 
+	{
+		if (!string.IsNullOrWhiteSpace(Login) && !string.IsNullOrWhiteSpace(Password) && !string.IsNullOrWhiteSpace(NumberPassport))
+		{
+			var userRole = unitOfWork.RoleRepository.Get((x) => x.Name == "User").FirstOrDefault();
+			unitOfWork.UserRepository.Create(new ORM.User
+			{
+				Name = Login,
+				NumberPassport = NumberPassport,
+				Password = Password,
+				RoleId = userRole.Id
+
+			});
+			Navigation.NavigateTo("/home");
+
+		}
+	}
+}

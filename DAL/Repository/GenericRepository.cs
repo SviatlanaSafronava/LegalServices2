@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL_Interface.Repository;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +28,7 @@ namespace DAL.Repository
         {
             return _dbSet.AsNoTracking().Where(predicate).ToList();
         }
-        public TEntity FindById(int id)
+        public TEntity FindById(long id)
         {
             return _dbSet.Find(id);
         }

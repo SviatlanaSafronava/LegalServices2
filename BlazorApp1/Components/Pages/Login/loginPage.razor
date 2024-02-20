@@ -1,13 +1,78 @@
-﻿@page "/"
+﻿ @page "/"
+@using DAL
+@using DAL_Interface.Repository
+@using ORM
 
 @layout LoginLayout
+@inject IUnitOfWork unitOfWork
+@inject NavigationManager Navigation
 
-<h3>loginPage</h3>
+<h3 style="background: #D5D5FF; color: blue;">
+	<MudAvatar Color="Color.Primary">LS</MudAvatar>
+	LegalServices</h3>
 
-<MudTextField @bind-Value="Login" Label="Login" Variant="Variant.Outlined"></MudTextField>
+ 
+ <MudGrid>
+  <MudItem xs="4" sm="4" md="4" lg="4" xl="4">
+	  <MudPaper Class="pa-16">Вход в личный кабинет</MudPaper>
+	   <MudPaper Class="pa-16">Вход в личный кабинет</MudPaper>
+		<MudPaper Class="pa-16">Чат</MudPaper>
+</MudItem>
+  <MudItem xs="4" sm="4" md="4" lg="4" xl="4">
+	<MudPaper> 
+<MudTextField @bind-Value="Login" Label="Login" Variant="Variant.Outlined" Color="Color.Info">Primary></MudTextField>
+<MudTextField @bind-Value="Password" Label="Password" InputType="InputType.Password" Variant="Variant.Outlined" Color="Color.Dark">Secondary></MudTextField>
+<MudButton OnClick="Click" Variant="Variant.Filled" Color="Color.Info">click</MudButton>
+</MudPaper>
+<MudPaper Class="pa-16">Оставаться в системе</MudPaper>
+<MudPaper Class="pa-16">Забыли пароль?</MudPaper>
+<MudPaper Class="pa-16">Зарегистрироваться</MudPaper>
+  </MudItem>
+  <MudItem xs="4" sm="4" md="4" lg="4" xl="4">
+		<MudPaper Class="pa-16">У Вас еще нет учетной записи?</MudPaper>
+  </MudItem>
+</MudGrid>
+
+<MudLink Href="/register">Register</MudLink>
+
+<MudButton OnClick="@((e) => OnLogin())">Click me</MudButton>
+
+    
+@*@<MudTextField @bind-Value="Login" Label="Login" Variant="Variant.Outlined"></MudTextField>
 <MudTextField @bind-Value="Password" Label="Password" InputType="InputType.Password" Variant="Variant.Outlined"></MudTextField>
+<MudButton OnClick="Click">click</MudButton>*@
+
+  
 
 @code {
 	string? Login { get; set; }
 	string? Password { get; set; }
+
+	private void OnLogin()
+	{
+		if (!string.IsNullOrWhiteSpace(Login) && !string.IsNullOrWhiteSpace(Password))
+		{
+			var user = unitOfWork.UserRepository.Get((x) => x.Name == Login && x.Password == Password).FirstOrDefault();
+			if (user != null)
+			{
+				Navigation.NavigateTo("/home");
+			}
+		}
+
+	}
+	void Click()
+	{
+		 
+				User user = unitOfWork.UserRepository.Get().FirstOrDefault(x => x.Email == Login);
+
+				if (user.NumberPassport == Password)
+				{
+
+				}
+			
+		
+	}
+	 
 }
+ 
+
